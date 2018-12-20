@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {+title}
+      <title>Chicken Tender Marketplace</title>
+    {/title}
+    <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=1">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/bootstrap-social/bootstrap-social.css"/>
+    <link rel="stylesheet" type="text/css" href="/bootstrap-social/assets/css/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/themes/slate.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/app.css"/>
+    {+additionalCss/}
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    {+additionalScripts/}
+  </head>
+  <body>
+    {+bodyContent/}
+  </body>
+</html>

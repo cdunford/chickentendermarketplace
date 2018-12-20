@@ -1,0 +1,43 @@
+version: '3'
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - VIRTUAL_HOST=chktndr.local,127.0.0.1
+      - VIRTUAL_PORT=3000
+      - TZ=America/Toronto
+    links:
+      - db
+    volumes:
+      - staticconfig:/app/dist/config/static
+      - dynamiccontent:/app/dist/dynamicContent
+  db:
+    image: 'mongo:latest'
+    command: --replSet rs0
+    volumes:
+    - mongodata:/data/db
+  nginx-proxy:
+    image: jwilder/nginx-proxy:alpine
+    labels:
+      com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
+    volumes:
+      - nginx-vhost.d:/etc/nginx/vhost.d
+      - nginx-html:/usr/share/nginx/html
+      - nginx-certs:/etc/nginx/certs:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+volumes:
+  staticconfig:
+    external:
+      name: chktndr-staticconfig
+  dynamiccontent:
+    external:
+      name: chktndr-dynamiccontent
+  mongodata:
+    external:
+      name: chktndr-data
+  nginx-vhost.d:
+  nginx-html:
+  nginx-certs:

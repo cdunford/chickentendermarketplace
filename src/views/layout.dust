@@ -1,0 +1,87 @@
+{>"main"/}
+{<bodyContent}
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span>
+          <img class="navbar-logo" src="/images/logo_large.png"/>
+          <span class="title title-small">#chktndrmkt</span>
+        </span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav">
+        <li {@eq key=nav value="orders"}class="active"{/eq}><a href="/app/orders">Orders</a></li>
+        <li {@eq key=nav value="transactions"}class="active"{/eq}><a href="/app/transactions">Transactions</a></li>
+        <li class="dropdown {@eq key=nav value="users"}active"{/eq}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+            <span>Users</span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/app/users/profiles">Profiles</a></li>
+            <li><a href="/app/users/wealth">Wealth</a></li>
+          </ul>
+        </li>
+      </ul>
+      {#user}
+      <ul class="nav navbar-nav navbar-right">
+        {@currentUserHasRole role="admin"}
+        <li {@eq key=nav value="audit"}class="active"{/eq}><a href="/app/audit">Audit</a></li>
+        {/currentUserHasRole}
+        <li class="dropdown {@eq key=nav value="profile"}active{/eq}">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">
+            {>"avatar" avatar=avatar extraContainerClasses="navbar-avatar"/}
+            <span>{firstName} {lastName} </span>
+            {@eq key=coins value=0}<span class="label label-default">{coins}</span>{/eq}
+            {@lt key=coins value=0}<span class="label label-danger">{coins}</span>{/lt}
+            {@gt key=coins value=0}<span class="label label-success">{coins}</span>{/gt}
+            <span> </span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/app/users/editProfile">Profile</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/app/auth/logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+      {/user}
+    </div>
+  </div>
+</nav>
+<div class="container">
+  {#errors}
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Error: </strong><span>{.}</span>
+  </div>
+  {/errors}
+  {#warnings}
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Warning: </strong><span>{.}</span>
+  </div>
+  {/warnings}
+  {#successes}
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Success: </strong><span>{.}</span>
+  </div>
+  {/successes}
+  {#infos}
+  <div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Info: </strong><span>{.}</span>
+  </div>
+  {/infos}
+</div>
+{+mainContent/}
+{/bodyContent}

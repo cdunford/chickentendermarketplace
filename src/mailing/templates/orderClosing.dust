@@ -1,0 +1,8 @@
+{>"emailBase"/}
+{<emailContent}
+  <p>
+    Quick! An order from '{order.location}' is about to close in {closingTime} minutes!&nbsp;
+    <a href="{root}/app/orders/join?id={order._id}&amp;returnTo=/app/orders">Click here</a> to spend some valuable&nbsp;
+    chicken tender on this wonderful order!
+  </p>
+{/emailContent}

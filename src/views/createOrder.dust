@@ -1,0 +1,40 @@
+{>"standardForm"/}
+{<formTitle}Create Order{/formTitle}
+{<additionalScripts}
+<script src="/moment/moment.js"></script>
+<script type="text/javascript">
+  $(function() {
+    function processCreateOrderForm(event) {
+      var closeDateLocal = $('#closeDateLocal').val();
+      if(!closeDateLocal) {
+        $('#closeDate').val('');
+        return true;
+      }
+
+      $('#closeDate').val(moment(closeDateLocal).format());
+      return true;
+    }
+
+    $('#createOrderForm').submit(processCreateOrderForm)
+  });
+</script>
+{/additionalScripts}
+{<formAttributes}id="createOrderForm"{/formAttributes}
+{<formFields}
+  <div class="form-group">
+    <label for="type">Type</label>
+    <select name="type" class="form-control" id="type">
+      {#types}
+      <option>{name}</option>
+      {/types}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="closeDate">Closing Date</label>
+    <input type="datetime-local" name="closeDateLocal" class="form-control" id="closeDateLocal"></input>
+    <input type="hidden" name="closeDate" id="closeDate"></input>
+  </div>
+{/formFields}
+{<formButtons}
+  <button type="submit" class="btn btn-default">Create</button>
+{/formButtons}

@@ -1,0 +1,42 @@
+{
+  "sessionSecret": "",
+  "oAuth": {
+    "google": {
+      "clientID": "",
+      "clientSecret": "",
+      "callbackURL": "http://127.0.0.1:3000/app/auth/google/callback"
+    },
+    "github": {
+      "clientID": "",
+      "clientSecret": "",
+      "callbackURL": "http://127.0.0.1:3000/app/auth/github/callback"
+    },
+    "facebook": {
+      "clientID": "",
+      "clientSecret": "",
+      "callbackURL": "http://127.0.0.1:3000/app/auth/facebook/callback"
+    }
+  },
+  "smtp": {
+    "service": "Zoho",
+    "user": "donotreply@chickentendermarketplace.ca",
+    "password": "",
+    "from": "\"ChickenTenderMarketplace\" <donotreply@chickentendermarketplace.ca>"
+  },
+  "siteRoot": "http://127.0.0.1:3000",
+  "orderTypes": [
+    {
+      "name": "Tasca Piri Piri",
+      "cost": 10,
+      "description": "Piri piri chicken & fries",
+      "fields": [
+        {
+          "name": "Selection",
+          "values": [
+            "Quarter chicken & fries"
+          ]
+        }
+      ]
+    }
+  ]
+}

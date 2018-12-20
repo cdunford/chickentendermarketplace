@@ -1,0 +1,36 @@
+{>"layout"/}
+{<mainContent}
+<div class="container">
+  <h2>
+    <span>Wealth </span>
+    <small>
+    {@eq key=ascending value="false" type="boolean"}
+      <a class="glyphicon glyphicon-arrow-down" href="{path}?ascending=1"></a>
+    {:else}
+      <a class="glyphicon glyphicon-arrow-up" href="{path}?ascending=0"></a>
+    {/eq}
+    </small>
+  </h2>
+  <div class="row well">
+    <table class="table">
+      <tr>
+        <th>User</th>
+        <th>Coins</th>
+      </tr>
+      {#users}
+      <tr>
+        <td>
+          {>"avatar" avatar=avatar/}
+          <span>{firstName} {lastName}</span>
+        </td>
+        <td>
+          {@eq key=coins value=0}<span class="label label-default">{coins}</span>{/eq}
+          {@lt key=coins value=0}<span class="label label-danger">{coins}</span>{/lt}
+          {@gt key=coins value=0}<span class="label label-success">{coins}</span>{/gt}
+        </td>
+      </tr>
+      {/users}
+    </table>
+  </div>
+</div>
+{/mainContent}

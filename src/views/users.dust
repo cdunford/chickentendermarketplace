@@ -1,0 +1,65 @@
+{>"layout"/}
+{<additionalScripts}
+{>"paginationScripts" paginationSelector=".pagination" baseUri="{path}"/}
+{/additionalScripts}
+{<mainContent}
+<div class="container">
+  <ul class="list-group">
+  {#users}
+    <li class="list-group-item list-group-card">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-9 col-sm-9 col-xs-8">
+            <h3>
+              {>"avatar" avatar=avatar/}
+              <span>{firstName} {lastName} {^enabled}<small>(Disabled)</small> {/enabled}</span>
+              {?enabled}
+              {@eq key=coins value=0}<span class="label label-default">{coins}</span>{/eq}
+              {@lt key=coins value=0}<span class="label label-danger">{coins}</span>{/lt}
+              {@gt key=coins value=0}<span class="label label-success">{coins}</span>{/gt}
+              {/enabled}
+            </h3>
+            {@arrayContains array="roles" value="admin"}<h5>Administrator</h5>{/arrayContains}
+            {@currentUserHasRole role="admin"}
+            <ul>
+            {#oAuthIds}
+              <li>{authType}: {id}</li>
+            {/oAuthIds}
+            </ul>
+            {/currentUserHasRole}
+            <br/>
+            <a href="mailto:{email}"><h4>{email}</h4></a>
+          </div>
+          <div class="btn-group-vertical col-md-3 col-sm-3 col-xs-4">
+          {@currentUserHasRole role="admin"}
+            {?enabled}
+              {@isNotCurrentUserId id=_id}<a href="{path}/../admin/disable?id={_id}" class="btn btn-default">Disable</a>{/isNotCurrentUserId}
+              <a href="{path}/../admin/setRoles?id={_id}" class="btn btn-default">Set Roles</a>
+              <a href="{path}/../admin/setOAuthProvider?id={_id}" class="btn btn-default">Set OAuth</a>
+              <a href="{path}/../admin/setCoins?id={_id}" class="btn btn-default">Set Coins</a>
+            {:else}
+              <a href="{path}/../admin/enable?id={_id}" class="btn btn-default">Enable</a>
+              {^activated}
+              <a href="{path}/../admin/confirmDelete?id={_id}" class="btn btn-default">Delete</a>
+              {/activated}
+            {/enabled}
+          {/currentUserHasRole}
+          {@isNotCurrentUserId id=_id}
+            {?enabled}
+              {@gt key=user.coins value=0}
+              <a href="{path}/../transfer?id={_id}" class="btn btn-default">Transfer</a>
+              {/gt}
+            {/enabled}
+          {/isNotCurrentUserId}
+          </div>
+        </div>
+      </div>
+    </li>
+  {/users}
+  </ul>
+  <nav class="text-center">
+    <ul class="pagination" aria-label="Page navigation">
+    </ul>
+  </nav>
+</div>
+{/mainContent}

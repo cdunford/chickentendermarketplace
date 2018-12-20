@@ -1,0 +1,8 @@
+{>"emailBase"/}
+{<emailContent}
+  <p>
+  A new user by the name of <strong>{user.firstName} {user.lastName} ({user.email})</strong> has&nbsp;
+  logged into the site. <a href="{root}/app/users/admin/enable?id={user._id}&amp;returnTo=/app/users/profiles">Click here</a> to&nbsp;
+  enable this user so they can enjoy mouthwatering chicken tender.
+  </p>
+{/emailContent}

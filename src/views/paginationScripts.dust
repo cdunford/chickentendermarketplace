@@ -1,0 +1,14 @@
+<script src="/simplePagination/jquery.simplePagination.js"></script>
+<script type="text/javascript">
+  $(function() {
+    $('{paginationSelector}').pagination({
+      pages: {pages},
+      displayedPages: 8,
+      edges: 4,
+      currentPage: {page},
+      onPageClick: function(page, event) {
+        window.location.href = '{baseUri}?page=' + page;
+      }
+    });
+  });
+</script>

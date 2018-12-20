@@ -1,0 +1,25 @@
+{>"main"/}
+{<additionalCss}
+  <link rel="stylesheet" type="text/css" href="/css/login.css"/>
+{/additionalCss}
+{<bodyContent}
+  <div class="vertical-center">
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 text-center">
+          <h1 class="title">#chktndrmkt</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 text-center">
+          <img class="logo-large" src="/images/logo_large.png"/>
+        </div>
+      </div>
+      <div class="row login-button-row">
+        <div class="col-xs-12 col-sm-12 text-center">
+          <h3>Oops... Your account is disabled. Please contact an administrator to have it enabled.</h3> 
+        </div>
+      </div>
+    </div>
+  </div>
+{/bodyContent}

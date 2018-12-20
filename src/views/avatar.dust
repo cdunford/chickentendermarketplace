@@ -1,0 +1,9 @@
+{?avatar}
+<span class="{extraContainerClasses} avatar-container">
+  <img class="avatar img-rounded" src="/avatars/{avatar}"/>
+ </span>
+ {:else}
+ <span class="{extraContainerClasses} avatar-container">
+  <img class="avatar img-rounded" src="/images/unknownavatar.png"/>
+ </span>
+ {/avatar}

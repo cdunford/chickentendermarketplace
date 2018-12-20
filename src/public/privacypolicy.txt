@@ -1,0 +1,4 @@
+- This site collects user information (names, email addresses) for the sole purpose
+  of the activities on this site.
+
+- No identifying personal information is provided/sold to any third parties.

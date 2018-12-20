@@ -1,0 +1,41 @@
+{>"main"/}
+{<additionalCss}
+  <link rel="stylesheet" type="text/css" href="/css/login.css"/>
+{/additionalCss}
+{<bodyContent}
+  <div class="vertical-center">
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 text-center">
+          <h1 class="title">#chktndrmkt</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 text-center">
+          <img class="logo-large" src="/images/logo_large.png"/>
+        </div>
+      </div>
+      <div class="row login-button-row">
+        <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 text-center">
+          <a href="/app/auth/facebook" class="btn btn-block btn-lg btn-social btn-facebook">
+            <span class="fa fa-facebook"></span><span>Sign in with Facebook</span>
+          </a>
+        </div>
+      </div>
+      <div class="row login-button-row">
+        <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 text-center">
+          <a href="/app/auth/google" class="btn btn-block btn-lg btn-social btn-google">
+            <span class="fa fa-google"></span><span>Sign in with Google</span>
+          </a>
+        </div>
+      </div>
+      <div class="row login-button-row">
+        <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 text-center">
+          <a href="/app/auth/github" class="btn btn-block btn-lg btn-social btn-github">
+            <span class="fa fa-github"></span><span>Sign in with GitHub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{/bodyContent}

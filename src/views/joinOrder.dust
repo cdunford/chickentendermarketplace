@@ -1,0 +1,22 @@
+{>"standardForm"/}
+{<formTitle}Join Order{/formTitle}
+{<formPreface}
+<h4>From: {order.location} <small>{order.description}</small></h4>
+<h5>Closes: {order.closeDate}</h5>
+<h5>Cost: <span class="label label-default">{order.cost}</span></h5>
+{/formPreface}
+{<formFields}
+  {#orderDefinition.fields}
+  <div class="form-group">
+    <label for="{name}">{name}</label>
+    <select name="{name}" class="form-control">
+      {#values}
+      <option>{.}</option>
+      {/values}
+    </select>
+  </div>
+  {/orderDefinition.fields}
+{/formFields}
+{<formButtons}
+  <button type="submit" class="btn btn-default">Join</button>
+{/formButtons}

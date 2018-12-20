@@ -1,0 +1,18 @@
+{>"layout"/}
+{<mainContent}
+  <div class="container">
+    <h2>Close Order</h2>
+    <div class="row well">
+      <div class="col-md-2 col-sm-1 col-xs-1"></div>
+      <div class="col-md-8 col-sm-10 col-xs-10 text-center">
+        <p>Are you sure you want to close the order?</p>
+        <div class="btngroup">
+          <div class="text-center">
+            <a href="{path}/../close?id={order._id}" class="btn btn-default">Yes</a>
+            <a href="{returnTo}" class="btn btn-default">No</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{/mainContent}

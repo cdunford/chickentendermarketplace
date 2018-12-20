@@ -1,0 +1,68 @@
+@font-face {
+  font-family: "Metro";
+  src: url(/fonts/Metro.otf)
+}
+
+.title {
+  color: #af9400;
+  font-family: "Metro";
+}
+
+.title-small {
+  font-size: 0.75em;
+}
+
+.navbar-brand {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 24px;
+}
+
+.navbar-logo {
+  height:100%;
+  padding-right: 8px;
+}
+
+.navbar-avatar {
+  margin-top: -12px;
+  margin-bottom: -12px;
+}
+
+.avatar-container {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.avatar {
+  height: 100%;
+  width: 100%;
+}
+
+.pagination>li.disabled>a {
+  pointer-events: none;
+}
+
+.list-group-card {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.list-group-card-highlight {
+  border-width: 4px;
+  border-style: solid;
+  border-color: #1f7e9a;
+}
+
+.list-group-card-danger {
+  border-width: 4px;
+  border-style: solid;
+  border-color: #cc2222;
+}
+
+.internal-section {
+  margin-top: 20px;
+}

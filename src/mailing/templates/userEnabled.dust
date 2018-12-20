@@ -1,0 +1,6 @@
+{>"emailBase"/}
+{<emailContent}
+  <p>
+  Your account is now enabled! <a href="{root}">Click here</a> to enjoy some chicken tender!
+  </p>
+{/emailContent}

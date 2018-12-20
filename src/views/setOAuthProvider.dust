@@ -1,0 +1,19 @@
+{>"standardForm"/}
+{<formTitle}{>"avatar" avatar=targetUser.avatar/}{targetUser.firstName} {targetUser.lastName} <small>Set OAuth Provider</small>{/formTitle}
+{<formFields}
+  <div class="form-group">
+    <label for="provider">Provider</label>
+    <select name="provider" id="provider" class="form-control">
+      {#oAuthProviders}
+      <option value="{name}">{name}</option>
+      {/oAuthProviders}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="id">ID</label>
+    <input name="id" type="text" class="form-control" id="id" required></input>
+  </div>
+{/formFields}
+{<formButtons}
+  <button type="submit" class="btn btn-default">Save</button>
+{/formButtons}

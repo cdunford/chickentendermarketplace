@@ -1,0 +1,12 @@
+{>"standardForm"/}
+{<formAttributes}onsubmit="return confirm('Are you sure you want to transfer coins?');"{/formAttributes}
+{<formTitle}Transfer Coins to: {targetUser.firstName} {targetUser.lastName}{/formTitle}
+{<formFields}
+  <div class="form-group">
+    <label for="coins">Coins (max: {user.coins})</label>
+    <input name="coins" type="number" class="form-control" id="coins" required></input>
+  </div>
+{/formFields}
+{<formButtons}
+  <button type="submit" class="btn btn-default">Transfer</button>
+{/formButtons}

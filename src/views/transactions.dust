@@ -1,0 +1,57 @@
+{>"layout"/}
+{<additionalScripts}
+{>"paginationScripts" paginationSelector=".pagination" baseUri="{path}"/}
+{/additionalScripts}
+{<mainContent}
+<div class="container">
+  <ul class="list-group">
+    {#transactions}
+    <li class="list-group-item list-group-card">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <h3>{description} <small>{date}</small></h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="well">
+              <table class="table">
+                <tr>
+                  <th class="col-md-5">User</th>
+                  <th class="col-md-3">Delta</th>
+                  <th class="col-md-4">Change</th>
+                </tr>
+                {#entries}
+                  <tr>
+                    <td>
+                      {>"avatar" avatar=user.avatar/}
+                      <span>{user.firstName} {user.lastName}</span>
+                    </td>
+                    <td>
+                      {@math key=newValue method="subtract" operand=previousValue}
+                      <span class="label {@gt value=0}label-success{/gt}{@eq value=0}label-default{/eq}{@lt value=0}label-danger{/lt}">{@math key=newValue method="subtract" operand=previousValue/}</span>
+                      {/math}
+                    </td>
+                    <td>
+                      <span class="label {@gt key=previousValue value=0}label-success{/gt}{@eq key=previousValue value=0}label-default{/eq}{@lt key=previousValue value=0}label-danger{/lt}">{previousValue}</span>
+                      <span>&nbsp;</span>
+                      <span class="glyphicon glyphicon-arrow-right"></span>
+                      <span>&nbsp;</span>
+                      <span class="label {@gt key=newValue value=0}label-success{/gt}{@eq key=newValue value=0}label-default{/eq}{@lt key=newValue value=0}label-danger{/lt}">{newValue}</span>
+                    </td>
+                  </tr>
+                {/entries}
+              </table>
+            </div>
+          </div>
+      </div>
+    </li>
+    {/transactions}
+  </ul>
+  <nav class="text-center">
+    <ul class="pagination" aria-label="Page navigation">
+    </ul>
+  </nav>
+</div>
+{/mainContent}

@@ -1,0 +1,25 @@
+{>"emailBase"/}
+{<emailContent}
+<p>
+  An order has been logged affecting your wealth; updated wealth:
+</p>
+<table width="800" style="border:1px solid black;">
+  <tr>
+    <th style="border:1px solid black;">User</th>
+    <th style="border:1px solid black;">Opening Coins</th>
+    <th style="border:1px solid black;">Change</th>
+    <th style="border:1px solid black;">Balance</th>
+  </tr>
+  {#transaction.entries}
+  <tr>
+    <td style="border:1px solid black;" align="center">{user.firstName} {user.lastName}</td>
+    <td style="border:1px solid black;" align="center">{previousValue}</td>
+    <td style="border:1px solid black;" align="center">{@math key=newValue method="subtract" operand=previousValue/}</td>
+    <td style="border:1px solid black;" align="center">{newValue}</td>
+  </tr>
+  {/transaction.entries}
+</table>
+<p>
+  The order was purchased by: {order.purchaser.firstName} {order.purchaser.lastName}
+</p>
+{/emailContent}

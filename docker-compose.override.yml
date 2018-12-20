@@ -1,0 +1,5 @@
+version: '3'
+services:
+  nginx-proxy:
+    ports: 
+      - "3000:80"

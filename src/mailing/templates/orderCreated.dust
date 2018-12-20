@@ -1,0 +1,8 @@
+{>"emailBase"/}
+{<emailContent}
+  <p>
+    A brand new order has been created from '{order.location}'!&nbsp;
+    <a href="{root}/app/orders/join?id={order._id}&amp;returnTo=/app/orders">Click here</a> to spend some valuable&nbsp;
+    chicken tender on this wonderful order!
+  </p>
+{/emailContent}

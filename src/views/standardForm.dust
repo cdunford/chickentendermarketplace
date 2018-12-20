@@ -1,0 +1,20 @@
+{>"layout"/}
+{<mainContent}
+<div class="container">
+  <h2>{+formTitle/}</h2>
+  {+formPreface/}
+  <div class="row well">
+    <form method="post" {+formAttributes/}>
+      <div class="col-md-4 col-sm-3 col-xs-2"></div>
+      <div class="col-md-4 col-sm-6 col-xs-8">
+        {+formFields/}
+        <div class="text-center">
+          <div class="btn-group">
+            {+formButtons/}
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{/mainContent}

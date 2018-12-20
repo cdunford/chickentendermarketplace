@@ -1,0 +1,24 @@
+{>"standardForm"/}
+{<formAttributes}enctype="multipart/form-data"{/formAttributes}
+{<formTitle}{>"avatar" avatar=user.avatar/}{user.firstName} {user.lastName} <small>Profile</small>{/formTitle}
+{<formFields}
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input name="firstName" type="text" class="form-control" id="firstName" value={user.firstName} required></input>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input name="lastName" type="text" class="form-control" id="lastName" value={user.lastName} required></input>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input name="email" type="email" class="form-control" id="email" value={user.email} required></input>
+  </div>
+  <div class="form-group">
+    <label for="avatar">Avatar (max 2MB)</label>
+    <input name="avatar" accept="image/*" type="file" class="form-control" id="avatar"></input>
+  </div>
+{/formFields}
+{<formButtons}
+  <button type="submit" class="btn btn-default">Save</button>
+{/formButtons}

@@ -1,0 +1,7 @@
+{>"emailBase"/}
+{<emailContent}
+  <p>
+  {coins} coins have been transferred from '{sourceUser.firstName} {sourceUser.lastName}' to&nbsp;
+  '{targetUser.firstName} {targetUser.lastName}'
+  </p>
+{/emailContent}

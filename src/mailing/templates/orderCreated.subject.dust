@@ -1,0 +1,1 @@
+New order created from '{order.location}'; closing @ {order.closeDate}

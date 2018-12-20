@@ -1,0 +1,1 @@
+A new user has logged in: {user.firstName} {user.lastName}

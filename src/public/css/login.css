@@ -1,0 +1,18 @@
+.vertical-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.container-fluid {
+  flex: 1;
+}
+
+.logo-large {
+  max-height: 60vh;
+  max-width: 60vw;
+}
+
+.login-button-row {
+  margin: 16px;
+}

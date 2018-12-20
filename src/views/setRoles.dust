@@ -1,0 +1,46 @@
+{>"standardForm"/}
+{<additionalScripts}
+<script type="text/javascript">
+  $(function() {
+    function removeRow(e) {
+      e.preventDefault();
+      $(e.target).closest('div').remove();
+    }
+
+    $('#add-button').click(function(e) {
+      e.preventDefault();
+      var newElement = '<div class="input-group">';
+      newElement    += '<input name="roles[]" type="text" class="form-control"></input>';
+      newElement    += '<span class="input-group-btn">';
+      newElement    +=  '<a class="btn btn-danger glyphicon glyphicon-minus remove-button" href="#"></a>';
+      newElement    +=  '</span>';
+      newElement    += '</div>';
+      $('.form-group').append(newElement);
+
+      $('.remove-button').click(removeRow);
+    });
+
+    $('.remove-button').click(removeRow);
+  });
+</script>
+{/additionalScripts}
+{<formTitle}{>"avatar" avatar=targetUser.avatar/}{targetUser.firstName} {targetUser.lastName} <small>Set Roles</small>{/formTitle}
+{<formFields}
+  <div class="form-group">
+    <span>
+      <label for="roles">Roles&nbsp;</label>
+      <a id="add-button" class="btn btn-xs btn-success glyphicon glyphicon-plus" href="#"></a>
+    </span>
+    {#targetUser.roles}
+    <div class="input-group">
+      <input name="roles[]" type="text" class="form-control" value={.}></input>
+      <span class="input-group-btn">
+        <a class="btn btn-danger glyphicon glyphicon-minus remove-button" href="#"></a>
+      </span>
+    </div>
+    {/targetUser.roles}
+  </div>
+{/formFields}
+{<formButtons}  
+  <button type="submit" class="btn btn-default">Save</button>
+{/formButtons}

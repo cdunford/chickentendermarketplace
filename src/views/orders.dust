@@ -1,0 +1,136 @@
+{>"layout"/}
+{<additionalScripts}
+{>"paginationScripts" paginationSelector=".pagination" baseUri="{path}"/}
+{/additionalScripts}
+{<mainContent}
+  {@currentUserHasRole role="order-creator"}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <a href="{path}/admin/create" class="btn btn-primary btn-lg btn-block">Create Order</a>
+      </div>
+    </div>
+  </div>
+  {/currentUserHasRole}
+  <div class="container">
+    <ul class="list-group">
+    {#orders}
+      <li class="list-group-item list-group-card {@eq key=state value=1}list-group-card-highlight{/eq} {@eq key=state value=0}list-group-card-danger{/eq}">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-8">
+              <h3>
+                <span>{location}&nbsp;
+                  <small>
+                    {@select key=state}
+                      {@eq value=1}Open{/eq}
+                      {@eq value=0}Closing soon!{/eq}
+                      {@eq value=2}Closed{/eq}
+                      {@eq value=3}
+                      {?purchaser}
+                      Purchased by: {purchaser.firstName} {purchaser.lastName}
+                      {:else}
+                      Cancelled
+                      {/purchaser}
+                      {/eq}
+                      {@eq value=4}Cancelled{/eq}
+                    {/select}
+                  </small>
+                </span>
+              </h3>
+              <p>
+                <span class="label label-default">{description}</span>
+              </p>
+              <span>Opened: {openDate}</span>
+              <br/>
+              {@select key=state}
+              {@eq value=0/}
+              {@eq value=1/}
+              {@any}
+                <span>Closes: {closeDate}</span>
+              {/any}
+              {@none}
+                <span>Closed: {closeDate}</span>
+              {/none}
+              {/select}
+              <br/>
+              <span>Cost: </span>
+              <span class="label label-primary">{cost}</span>
+            </div>
+            <div class="btn-group-vertical col-md-3 col-sm-3 col-xs-4">
+              {@select key=state}
+              {@eq value=0/}
+              {@eq value=1/}
+              {@any}
+                {@currentUserNotInOrder order=.}
+                <a href="{path}/join?id={_id}" class="btn btn-info">Join</a>
+                {/currentUserNotInOrder}
+                {@currentUserInOrder order=.}
+                <a href="{path}/confirmLeave?id={_id}" class="btn btn-info">Leave</a>
+                {/currentUserInOrder}
+                {@currentUserHasRole role="order-creator"}
+                <a href="{path}/admin/confirmClose?id={_id}" class="btn btn-warning">Close</a>
+                <a href="{path}/admin/confirmCancel?id={_id}" class="btn btn-danger">Cancel</a>
+                {/currentUserHasRole}
+              {/any}
+              {/select}
+              {@eq key=state value=2}
+                {@currentUserHasRole role="order-creator"}
+                <a href="{path}/admin/log?id={_id}" class="btn btn-info">Log</a>
+                <a href="{path}/admin/confirmCancel?id={_id}" class="btn btn-danger">Cancel</a>
+                {/currentUserHasRole}
+              {/eq}
+            </div>
+          </div>
+          <div class="row internal-section">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <h4>Orders ({@size key=userOrders /}):</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="well">
+                <table class="table">
+                  <tr>
+                    <th class="col-md-5">User</th>
+                    <th class="col-md-7">Order details</th>
+                  </tr>
+                  {#userOrders state=state}
+                  <tr>
+                    <td>
+                      {>"avatar" avatar=user.avatar/}
+                      <span>{user.firstName} {user.lastName} </span>
+                      {@select key=state}
+                      {@eq value=0/}
+                      {@eq value=1/}
+                      {@eq value=2/}
+                      {@any}
+                        {@eq key=user.coins value=0}<span class="label label-default">{user.coins}</span>{/eq}
+                        {@lt key=user.coins value=0}<span class="label label-danger">{user.coins}</span>{/lt}
+                        {@gt key=user.coins value=0}<span class="label label-success">{user.coins}</span>{/gt}
+                      {/any}
+                      {/select}
+                    </td>
+                    <td>
+                      <ul>
+                        {#details}
+                        <li>{.}</li>
+                        {/details}
+                      </ul>
+                    </td>
+                  </tr>
+                  {/userOrders}
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    {/orders}
+    </ul>
+    <nav class="text-center">
+      <ul class="pagination" aria-label="Page navigation">
+      </ul>
+    </nav>
+  </div>
+{/mainContent}

@@ -1,0 +1,17 @@
+{>"standardForm"/}
+{<formTitle}Log Order{/formTitle}
+{<formFields}
+  {#order}
+  <div class="form-group">
+    <label for="purchaser">Purchaser</label>
+    <select name="purchaser" class="form-control" id="purchaser">
+      {#userOrders}
+      <option value="{user._id}">{user.firstName} {user.lastName}</option>
+      {/userOrders}
+    </select>
+  </div>
+  {/order}
+{/formFields}
+{<formButtons}
+  <button type="submit" class="btn btn-default">Log</button>
+{/formButtons}

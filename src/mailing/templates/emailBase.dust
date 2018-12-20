@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h3>Hello!</h3>
+    {+emailContent/}
+    <p>
+      <span>Sincerely, the management.</span>
+      <br/>
+      <a href="mailto:admin@chickentendermarketplace.ca">admin@chickentendermarketplace.ca</a>
+      <br/>
+      <a href="{root}">{root}</a>
+    </p>
+  </body>
+</html>

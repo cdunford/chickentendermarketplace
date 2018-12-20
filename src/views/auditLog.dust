@@ -1,0 +1,25 @@
+{>"layout"/}
+{<additionalScripts}
+{>"paginationScripts" paginationSelector=".pagination" baseUri="{path}"/}
+{/additionalScripts}
+{<mainContent}
+  <div class="container">
+    <table class="table">
+      <tr>
+        <th>Timestamp</th>
+        <th>Event</th>
+      </tr>
+    {#logs}
+      <tr>
+        <td>{date}</td>
+        <td>{log}</td>
+      </tr>
+    {/logs}
+    </table>
+    <nav class="text-center">
+      <ul class="pagination" aria-label="Page navigation">
+      </ul>
+    </nav>
+  </div>
+</div>
+{/mainContent}

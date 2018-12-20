@@ -1,0 +1,7 @@
+{>"emailBase"/}
+{<emailContent}
+  <p>
+  Your current coin quantity has been set to {coins} by&nbsp;
+  <a href="mailto:{admin.email}">{admin.firstName} {admin.lastName}</a>.
+  </p>
+{/emailContent}
