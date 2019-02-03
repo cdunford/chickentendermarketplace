@@ -75,7 +75,7 @@ export interface IOAuthProvider {
  * @interface IOAuthProviderDescription
  */
 export interface IOAuthProviderDescription {
-  provider: { new(config: IOAuthProviderConfig): IOAuthProvider };
+  provider: new (config: IOAuthProviderConfig) => IOAuthProvider;
   name: string;
   config: IOAuthProviderConfig;
   scope?: string[];

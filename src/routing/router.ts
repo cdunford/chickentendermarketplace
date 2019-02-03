@@ -13,7 +13,7 @@ export interface IRouter {
  * @interface IRouteConfig
  */
 export interface IRouteConfig {
-  router: { new(systemState: any, config?: any): IRouter };
+  router: new (systemState: any, config?: any) => IRouter;
   mount: string;
   config?: any;
 }
