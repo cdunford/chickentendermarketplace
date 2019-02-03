@@ -22,6 +22,7 @@
     "url": "https://github.com/cdunford/chickentendermarketplace.git"
   },
   "dependencies": {
+    "@passport-next/passport-google-oauth2": "^1.0.0",
     "adaro": "^1.0.4",
     "agenda": "^2.0.2",
     "body-parser": "^1.18.3",
@@ -46,7 +47,6 @@
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-github2": "^0.1.11",
-    "passport-google-oauth2": "^0.1.6",
     "simple-pagination.js": "^1.6.0",
     "typescript": "^2.9.2",
     "uuid": "^3.3.2"
@@ -71,7 +71,6 @@
     "@types/passport": "^0.3.5",
     "@types/passport-facebook": "^2.1.8",
     "@types/passport-github2": "^1.2.2",
-    "@types/passport-google-oauth2": "^0.1.2",
     "@types/uuid": "^3.4.4",
     "tslint": "^5.12.1"
   }

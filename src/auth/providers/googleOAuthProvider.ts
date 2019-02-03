@@ -1,5 +1,5 @@
+import { Strategy } from '@passport-next/passport-google-oauth2';
 import { Strategy as StrategyBase } from 'passport';
-import { Strategy } from 'passport-google-oauth2';
 import { IOAuthProvider, IOAuthProviderConfig, IOAuthUser, ValidatorFunction } from '../entities';
 
 /**
