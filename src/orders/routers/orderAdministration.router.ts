@@ -565,10 +565,9 @@ export class OrderAdministrationRouter extends RouterBase {
           session,
         });
     }).then((t) => transaction = t[0])
+      .then(() => session.commitTransaction())
+      .then(() => req.flash('success', 'Successfully logged order'))
       .then(() => {
-        session.commitTransaction();
-        req.flash('success', 'Successfully logged order');
-      }).then(() => {
         return Order.findById(req.query.id).populate('userOrders.user').populate('purchaser').exec();
       }).then((updatedOrder) => {
         return this.mailer.sendMail(
