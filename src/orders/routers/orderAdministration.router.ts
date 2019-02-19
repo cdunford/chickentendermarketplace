@@ -181,6 +181,16 @@ export class OrderAdministrationRouter extends RouterBase {
     );
 
     router.get(
+      '/confirmReopen',
+      query('id').exists().not().isEmpty(),
+      sanitizeQuery('id').trim(),
+      (req, res, next) => this.validateRequest(req, res, next),
+      (req, res, next) => this.storeReturnTo(req, res, next),
+      (req, res, next) => this.renderConfirmReopen(req, res, next),
+      (req, res) => this.redirectToLast(req, res),
+    );
+
+    router.get(
       '/close',
       query('id').exists().not().isEmpty(),
       sanitizeQuery('id').trim(),
@@ -313,6 +323,35 @@ export class OrderAdministrationRouter extends RouterBase {
       });
     }).catch((err) => {
       this.logger.error(`Error rendering confirmCloseOrder: ${err}`);
+      req.flash('error', 'Failed to load order');
+      next();
+    });
+  }
+
+  /**
+   * @description Renders the confirmation to reopen order page.
+   * @private
+   * @param {Request} req Express request object.
+   * @param {Response} res Express response object.
+   * @param {NextFunction} next Express next function.
+   * @memberof OrderAdministrationRouter
+   */
+  private renderConfirmReopen(req: Request, res: Response, next: NextFunction): void {
+    Order.findOne({
+      _id: ObjectId(req.query.id),
+      state: OrderState.Closed,
+    }).exec().then((order) => {
+      if (!order) {
+        throw new Error(`Order not found: ${req.query.id}`);
+      }
+
+      const referrer = req.header('referrer');
+      res.render('confirmReopenOrder', {
+        order,
+        returnTo: referrer ? referrer : '/',
+      });
+    }).catch((err) => {
+      this.logger.error(`Error rendering confirmReopenOrder: ${err}`);
       req.flash('error', 'Failed to load order');
       next();
     });

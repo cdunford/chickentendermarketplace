@@ -14,7 +14,7 @@
   {/currentUserHasRole}
   <div class="container">
     <ul class="list-group">
-    {#orders}
+      {#orders}
       <li class="list-group-item list-group-card {@eq key=state value=1}list-group-card-highlight{/eq} {@eq key=state value=0}list-group-card-danger{/eq}">
         <div class="container-fluid">
           <div class="row">
@@ -77,6 +77,7 @@
               {@eq key=state value=2}
                 {@currentUserHasRole role="order-creator"}
                 <a href="{path}/admin/log?id={_id}" class="btn btn-info">Log</a>
+                <a href="{path}/admin/confirmReopen?id={_id}" class="btn btn-warning">Reopen</a>
                 <a href="{path}/admin/confirmCancel?id={_id}" class="btn btn-danger">Cancel</a>
                 {/currentUserHasRole}
               {/eq}
