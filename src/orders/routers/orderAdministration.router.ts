@@ -209,6 +209,15 @@ export class OrderAdministrationRouter extends RouterBase {
     );
 
     router.get(
+      '/reopen',
+      query('id').exists().not().isEmpty(),
+      sanitizeQuery('id').trim(),
+      (req, res, next) => this.validateRequest(req, res, next),
+      (req, res, next) => this.reopenOrder(req, res, next),
+      (req, res) => this.redirectToLast(req, res),
+    );
+
+    router.get(
       '/log',
       query('id').exists().not().isEmpty(),
       sanitizeQuery('id').trim(),
@@ -448,6 +457,34 @@ export class OrderAdministrationRouter extends RouterBase {
         req.flash('error', 'Failed to cancel order');
         this.logger.error(`Error canceling order: ${err}`);
       }).then(() => next());
+  }
+
+  /**
+   * @description Reopens a specified order.
+   * @private
+   * @param {Request} req Express request object.
+   * @param {Response} res Express response object.
+   * @param {NextFunction} next Express next function.
+   * @memberof OrderAdministrationRouter
+   */
+  private reopenOrder(req: Request, res: Response, next: NextFunction): void {
+    Order.findOneAndUpdate(
+      {
+        _id: ObjectId(req.query.id),
+        state: OrderState.Closed,
+      },
+      {
+        $set: {
+          state: OrderState.Open,
+        },
+      },
+    ).exec()
+      .then(() => req.flash('success', 'Order successfully reopened'))
+      .catch((err) => {
+        req.flash('error', 'Failed to reopen order');
+        this.logger.error(`Error reopening order: ${err}`);
+      })
+      .then(() => next());
   }
 
   /**
