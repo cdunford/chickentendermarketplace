@@ -38,11 +38,17 @@ export class GoogleOAuthProvider implements IOAuthProvider {
    * @memberof GoogleOAuthProvider
    */
   public parseProfile(profile: any): IOAuthUser {
+    let email = '';
+    if (profile.emails && profile.emails.length > 0) {
+      const [profileEmail] = profile.emails;
+      email = profileEmail.value;
+    }
+
     return {
       firstName: profile.name.givenName,
       lastName: profile.name.familyName,
       id: profile.id,
-      email: profile.email,
+      email,
     };
   }
 }
